@@ -1,3 +1,6 @@
 [submodule "pyz/pathfinding"]
 	path = pyz/pathfinding
 	url = https://github.com/MattCCS/HPA_STAR.git
+[submodule "pyz/sounds"]
+	path = pyz/sounds
+	url = https://github.com/MattCCS/PyZSounds
