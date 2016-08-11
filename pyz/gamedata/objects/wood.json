@@ -1,0 +1,28 @@
+{
+    "*":
+    {
+        "material": "wood"
+    },
+
+    "tree":
+    {
+        "attributes"    : ["damageable", "occluder", "impassible"],
+        "appearances"   : "O",
+        "colors"        : ["brown"],
+        "health"        : 10,
+
+        "s_death":
+        {
+            "sound": "foley/tree/",
+            "volume": 0.5
+        },
+        "spawn_death":
+        {
+            "any":
+            {
+                "wooden log": [0,1,3,2,1],
+                "twig": [0,1,2,3,5,2,1]
+            }
+        }
+    }
+}

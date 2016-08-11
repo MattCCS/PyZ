@@ -1,0 +1,14 @@
+{
+    "craft firewood":
+    {
+        "fuel": {
+            "attributes": ["cuttable", "flammable"],
+            "material": "wood",
+            "count": 1
+        },
+        "tool": {
+            "type": "slicing",
+            "hardness_beats": 2
+        }
+    }
+}

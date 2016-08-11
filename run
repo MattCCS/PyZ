@@ -1,0 +1,26 @@
+#!/bin/bash
+
+####################################
+# run this script to begin the project
+#
+# NOTE:  always run me as: "./run"
+####################################
+
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) # directory of this script
+cd $DIR
+
+if [ $# -eq 0 ]; then
+    python -B -m pyz.main
+fi
+
+if [ $# -eq 1 ] && [ $1 -eq 2 ]; then
+    python2 -B -m pyz.main
+fi
+
+if [ $# -eq 1 ] && [ $1 -eq 3 ]; then
+    python3 -m pyz.main
+fi
+
+if [ $# -eq 1 ] && [ $1 -eq 0 ]; then
+    python -i -B -m pyz.main
+fi

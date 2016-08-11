@@ -1,0 +1,95 @@
+(This file is for per-feature progress reporting, for review afterward)
+
+
+( 9-8-15 / Object integration )
+    + have objects render-cycling, on a (near-)global timer
+        + if timeout, no game update/aging occurs (hopefully)
+    + converted trees to objects
+        - but don't perform checks for them yet
+    - NEED to combine "blocking" with objects present in node!
+    + made "passability" check for objects
+    + made lantern an object (on the ground)
+    + MADE OCCLUSION DYNAMIC <3
+
+
+( 9-9-15 / ... )
+    BIG CHANGES
+    + added debug '(l)ook' command
+    + separated NODES and OBJECTS in terms of data categorization
+        (nodes will eventually just be containers for objects)
+    + changed 'passable' to 'impassible', as most objects should default to passable
+    + changed 'transparent' to 'occluder', added global potential-occlusion dataset, allows dynamic occlusion
+    + made trees objects, as they should be
+    + combat now checks for a SINGLE attackable object on the node, send the attack to it instead
+        + nodes can't be attacked
+    + removed 'self.blocked' set, as it no longer made sense to have
+    + delegated the GameObject class to age/kill its objects
+    + gave GameObjects the same sexy '__getitem__' as DataObjects for attribute lookups
+    + added sounds
+    - NEED to change how attack sounds are determined
+    - NEED to change how colors are determined (by material)
+        - NEED to make materials their own JSON type, with colors and densities, etc.
+    - NEED to make the canvas-cycle timer global
+    - NEED to make 'news' globally-accessible
+    ! multiple coordinate-edge-radius values allow for "thick"/"thin" objects!  do this!
+
+
+( 9-13-15 / Flexible JSON data, object drops )
+    + JSON data acceptance overhauled, particularly properties.json -- can now be infinitely nested and dynamic with <obj> tag
+    + materials are now essentialy sub-objects, to hold sensible default values
+    + birth/death spawns implemented, with histrogram-determined rates
+    + added version info
+    + made auto-attack work if only 1 Object is .damageable
+    - NEED to separate Grid data from Grid MANAGEMENT code!
+    - NEED to add inventory + weight limits
+    - NEED to add generic bounded/unbounded "focus"/"select" Event
+
+
+( 9-13-15 / Split up/decouple Grid2D from Grid2DManager )
+    ~ can't remember... this was a while ago.
+    ~ but basically, Grid2D now deals with the actual grid coordinate conversion
+    ~ Grid2D Manager deals with the rest -- needs to be split up more still
+
+
+( 10-20-15 / Make the Object/Node/Parent system more sane )
+    + added Parentable (and ObjectSet) classes -- both Node and GameObject inherit from Parentable,
+      which means they can have objects (as children) and can have parents -- except Nodes never do.
+    + got rid of position!  Now position is linked directly to the parent's position, recursively up to the Node
+    + fixed bug where objects were somehow added twice to the .objects list by making it an ordered set (ObjectSet)
+    - NEED to keep separating Grid data from Grid MANAGEMENT code!
+    - NEED to add inventory, etc.
+    - NEED to add "focus" action, etc.
+
+
+( 10-22-15 / Containers/Inventory and Items vs. Objects )
+    + added Containers
+    + added inventory
+    + added controls:  (p)ick up, (d)rop, (i)nventory
+    ~ NOTE:  can only pick up/drop when it's unambiguous -- otherwise, a menu will have to come up.
+    - NEED to implement floating menus!
+    - NEED to fix dealing with multiple items
+
+
+( 10-25-15 / Dynamic colors, gateway to dimming )
+    + v15.4
+    + HUGE!!  Colors are now RGB
+        + dynamically decided based on highly optimized function
+        + cached at every step, runs fast once, even faster subsequently
+        ~ this will allow tons of new colors to be created dynamically (e.g. via dimming)
+        ~ this ALSO allows for things like transparency or partial illumination!!! <<<<<<<<<<
+    + cleaned up some other code, put things in place to easily implement dimming
+        ~ for forefront windows to be given attention
+    - NEED to implement dimming
+    - NEED to keep working on inventory (once windows are stable)
+
+
+( 11-4-15 / Dimming )
+    + v0.15.5
+    + added dimming
+        + trivial, global application to all sub-windows below front
+    - dimming can turn colors to grayscale (and maybe vice versa), if it's closer
+        - might be bad?  consider somehow restricting grayscale and colors to their respective domains
+    - NEED to fix top-window flicker (some sort of curses order-of-operations issue?)
+    - NEED to keep working on inventory
+    - (removed Windows attempt)
+

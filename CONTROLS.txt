@@ -1,0 +1,34 @@
+[IMPLEMENTED]
+
+movement:
+    (UP/DOWN/LEFT/RIGHT) move
+    (UP/DOWN/LEFT/RIGHT) move + auto-attack
+    (x) raise
+    (z) lower
+
+flashlight:
+    (f) toggle (on/off)
+    (q) swivel left  (Q) faster
+    (e) swivel right (E) faster
+    (m) toggle mode (swivel, static, facing)
+
+inventory:
+    (i)nventory
+    (p)ick up
+    (d)rop
+
+context:
+    (l)ook
+
+####################################
+
+[PROPOSED]
+
+context:
+    (a)nnouncements
+
+inventory:
+    (C)raft
+
+combat:
+    (A) toggle auto-attack

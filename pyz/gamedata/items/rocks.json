@@ -1,0 +1,49 @@
+{
+    "*":
+    {
+        "material": "stone",
+        "s_move": "rock"
+    },
+
+    "stone":
+    {
+        "size": 8,
+        "hardness": 5,
+        "mass": 350,
+        "appearances": "o"
+    },
+
+    "heavy stone":
+    {
+        "size": 12,
+        "hardness": 5,
+        "mass": 500,
+        "appearances": "o"
+    },
+
+    "talc":
+    {
+        "size": 8,
+        "hardness": 1,
+        "mass": 50,
+        "appearances": "*"
+    },
+
+    "flint":
+    {
+        "size": 8,
+        "hardness": 7,
+        "mass": 350,
+        "attributes": ["knappable"],
+        "appearances": "%"
+    },
+
+    "gravel":
+    {
+        "size": 4,
+        "hardness": 5,
+        "mass": 150,
+        "appearances": "."
+    }
+
+}

@@ -1,0 +1,94 @@
+{
+    "*":
+    {
+        "concealment"   : 0,
+        "health"        : 0
+    },
+
+    "grass":
+    {
+
+        "attributes"    : [],
+        "concealment"   : 3,
+        "appearances"   : ",'\"`",
+        "colors"        : ["green", "dark green"],
+        "s_move"        : "grass",
+        "spawn_birth":
+        {
+            "exclusive": {},
+            "any":
+            {
+                "gravel"      : [999,1],
+                "talc"        : [999,1],
+                "flint"       : [999,1],
+                "stone"       : [999,1],
+                "heavy stone" : [999,1]
+            }
+        }
+    },
+
+    "tall grass":
+    {
+        "attributes"    : [],
+        "concealment"   : 15,
+        "spawn_birth":
+        {
+            "exclusive": {},
+            "any":
+            {
+                "gravel"      : [999,1],
+                "talc"        : [999,1],
+                "flint"       : [999,1],
+                "stone"       : [999,1],
+                "heavy stone" : [999,1]
+            }
+        }
+    },
+
+    "very tall grass":
+    {
+        "attributes"    : ["occluder"],
+        "concealment"   : 30,
+        "appearances"   : "\\|/)(",
+        "spawn_birth":
+        {
+            "exclusive": {},
+            "any":
+            {
+                "gravel"      : [999,1],
+                "talc"        : [999,1],
+                "flint"       : [999,1],
+                "stone"       : [999,1],
+                "heavy stone" : [999,1]
+            }
+        }
+    },
+
+    "dirt":
+    {
+        "attributes"    : [],
+        "appearances"   : ".",
+        "colors"        : ["brown", "maroon", "maroon", "maroon", "maroon"],
+        "s_move"        : "dirt",
+        "spawn_birth":
+        {
+            "exclusive": {},
+            "any":
+            {
+                "gravel"        : [399,1],
+                "talc"          : [399,1],
+                "flint"         : [399,1],
+                "stone"         : [399,1],
+                "heavy stone"   : [399,1]
+            }
+        }
+    },
+
+    "smoke":
+    {
+        "attributes"    : ["occluder"],
+        "appearances"   : "%&",
+        "colors"        : ["gray"]
+    }
+
+}

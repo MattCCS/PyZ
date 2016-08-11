@@ -1,0 +1,21 @@
+! BUG:  switching to "focus" mode on flashlight smears illumination -- refresh bug?
+
+- add inventory
+    - add containers
+- add crafting
+- add combat
+    - add entities
+    - add AI
+- MAKE COLORS more robust (in terms of the Layer class)
+- change how attack sounds are determined
+- make the canvas-cycle timer global
+- make 'news' globally-accessible
+
+- improve JSON verification logging
+
++ Craig Tree achievement
+
+- make various actions more difficult/impossible when you can't see (like picking things up)
+
+- some sort of 'dimming' to focus on windows
+- can we do that mathematically?  is there a curses.DIM?

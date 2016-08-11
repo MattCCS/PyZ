@@ -1,0 +1,9 @@
+{
+    "wolf":
+    {
+        "appearances"   : "W",
+        "colors"        : ["gray"],
+        "material"      : "wood",
+        "health"        : 5
+    }
+}

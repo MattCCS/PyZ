@@ -1,0 +1,9 @@
+{
+    "knappable"   : { "description": "Whether the object can be flaked into a sharper object through force" },
+    "sharpenable" : { "description": "Whether the object can be sharpened with a stone or blade" },
+
+    "occluder"    : { "description": "Whether the object blocks light" },
+    "impassible"  : { "description": "Whether the object blocks movement" },
+
+    "damageable"  : { "description": "Whether the object can be damaged" }
+}

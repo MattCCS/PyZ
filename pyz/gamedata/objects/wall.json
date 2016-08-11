@@ -1,0 +1,26 @@
+{
+    "stone wall":
+    {
+        "attributes"    : ["damageable", "occluder", "impassible"],
+        "appearances"   : "#",
+        "colors"        : ["gray"],
+        "health"        : 10,
+
+        "material"      : "stone",
+
+        "s_move"        : "stone",
+        "s_death":
+        {
+            "sound": "foley/tree/",
+            "volume": 0.5
+        },
+
+        "spawn_death":
+        {
+            "any":
+            {
+                "stone" : [1,2,2,2,3,3,4]
+            }
+        }
+    }
+}

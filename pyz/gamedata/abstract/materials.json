@@ -1,0 +1,15 @@
+{
+    "wood":
+    {
+        "attributes": ["sharpenable", "damageable"],
+        "colors": ["brown", "brown", "brown", "gray"],
+        "density": 0.53
+    },
+
+    "stone":
+    {
+        "attributes": ["sharpenable", "damageable"],
+        "colors": ["gray", "gray", "gray", "gray", "gray", "white", "white", "white"],
+        "density": 2.7
+    }
+}

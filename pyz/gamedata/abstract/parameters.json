@@ -1,0 +1,103 @@
+{
+    "material":
+    {
+        "description": "The object's material -- autofills with default relevant attributes/parameters",
+        "type": "str"
+    },
+
+
+
+    "size":
+    {
+        "description": "The object's rough size in centimeters",
+        "type": "int"
+    },
+
+    "concealment":
+    {
+        "description": "The max size object this object can conceal/require inspection to see",
+        "type": "int"
+    },
+
+
+
+    "hardness":
+    {
+        "description": "The object's hardness on the Moh's hardness scale",
+        "type": "int"
+    },
+
+    "mass":
+    {
+        "description": "The object's mass in grams -- 450 grams is about 1 pound",
+        "type": "int"
+    },
+
+    "density":
+    {
+        "description": "The object's density in grams/cm^3 -- water is 1.0",
+        "type": "float"
+    },
+
+
+
+    "appearances":
+    {
+        "description": "The possible ASCII/Unicode single-character appearance of this node -- multiple means random",
+        "type": "str"
+    },
+
+    "colors":
+    {
+        "description": "The possible ACSII/Unicode colors of this node -- multiple means random",
+        "type": "list:str"
+    },
+
+
+
+    "health":
+    {
+        "description": "The health of this object;  when 0, the object 'dies'.",
+        "type": "int"
+    },
+
+
+
+    "s_move":
+    {
+        "description": "The sound-material played when the object is walked on.",
+        "type": "str"
+    },
+
+    "s_death":
+    {
+        "description": "The sound-folder/volume played on the object's death.",
+        "sound": { "type": "str" },
+        "volume": { "type": "float" }
+    },
+
+    "spawn_birth":
+    {
+        "description": "...",
+        "any": {
+            "description": "...",
+            "<obj>": {
+                "description": "Histogram of spawn odds from [0,1,2...]",
+                "type": "list:int"
+            }
+        }
+    },
+
+    "spawn_death":
+    {
+        "description": "...",
+        "any": {
+            "description": "...",
+            "<obj>": {
+                "description": "Histogram of spawn odds from [0,1,2...]",
+                "type": "list:int"
+            }
+        }
+    }
+
+}

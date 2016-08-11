@@ -1,0 +1,34 @@
+
+http://guides.gamepressure.com/dayz/guide.asp?ID=15597  <<< SYMBOLS
+
+http://dayz.gamepedia.com/Hyperthermia#Hyperthermia
+http://dayz.gamepedia.com/Temperature
+
+http://dayz.gamepedia.com/Health
+
+####################################
+
+SIGHT:
+alter sight radius with darkness
+percent change to see through smoke/fog?  thickness modifier?
+
+FOV -> not 360, ~190, turns with player movement, can look()
+scope -> long, funneled FOV, different zoom levels (maxes)/angles
+
+"uncertainty" in sight @ periphery
+AND uncertainty in SOUND cues:
+    - ! indicates sound
+    - ? indicates sight
+    - color = intensity --> fades over time
+        - FLASHING RED, RED, YELLOW, 
+    - location = certainty
+        - multiple = uncertain
+        - single point = certain
+
+If a node has smoke, determine transparency RANDOMLY every tick!
+
+####################################
+
+HARDNESS:
+http://www.engineeringtoolbox.com/density-solids-d_1265.html
+

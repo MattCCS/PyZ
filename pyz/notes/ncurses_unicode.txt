@@ -1,0 +1,102 @@
+How to configure ncurses for Unicode characters.
+
+One of the checklist items on my idea of a "next-generation console
+roguelike" was that, well, obviously it ought to use the Unicode character
+set rather than being restricted to ASCII. 
+
+But that turns out to be surprisingly hard, for obscure reasons. So after 
+a few initial attempts and getting to a point where I no longer thought I 
+knew why it wasn't working, I put it off 'til later and went ahead with 
+ASCII-curses intending to fix it later. 
+
+Well, later turned out to be yesterday, and finally I have a checklist of 
+things that you need to do to get a C program to use the Unicode character 
+set in a (n)curses application. These refer to a Linux development box; I
+imagine some parts of it are different on other platforms. 
+
+
+
+First, you have to be using a UTF-8 locale (Mine is en_US.UTF-8; I imagine 
+others will have different choices). Type 'locale' at a shell prompt to be 
+sure. 
+
+Second, you have to have a term program that can display non-ASCII
+characters. Most of them can handle that these days, which is why using 
+Unicode is "obvious" now. 
+
+Third, you have to use a console font which contains glyphs for the 
+non-ASCII characters that you use. Again, most default console fonts 
+can handle that these days, but it's still another gotcha, and if you
+routinely pick some random blambot font to use on the console you're 
+likely to miss out. 
+
+Try typing a ç or something at the console prompt just to make sure you 
+see it. If you don't know how to type non-ASCII characters at the keyboard, 
+that's beyond the scope of what I'm covering here and you'll need to go 
+and read some documentation and possibly set some keyboard preferences. 
+Anyway, if you see it, then you've got the first, second, and third things 
+covered. 
+
+Fourth, you have to have ncurses configured to deal with wide characters. 
+For most linux distributions, that means: 
+A: your ncurses distribution is based on version 5.4 or later 
+(mine is 5.7) but *NOT* on version 11. I have no idea where 
+version 11 came from, but it's definitely a fork based on 
+a pre-5.4 ncurses version, and hasn't got the Unicode 
+extensions. 
+B: you have the 'ncursesw' versions, which are configured for 
+wide characters. How this works depends on your distribution, 
+but for Debian, you have to get both the 'ncursesw' package 
+to run ncurses programs that use wide characters and the 
+'ncursesw-dev' package to compile them. 
+
+Fifth, your program has to call "setlocale" immediately after it starts 
+up, before it starts curses or does any output. If it doesn't call 
+setlocale, your program will remain in the 'C' locale, which assumes 
+that the terminal cannot display any characters outside the ASCII set. 
+If you do any output or start curses before calling setlocale, you will
+force your runtime to commit to some settings before it knows the locale,
+and then setlocale won't have all of the desired effects. Your program is
+likely to print ASCII transliterations for characters outside the ASCII
+range if this happens.
+
+Sixth, you have to #define _X_OPEN_SOURCE_EXTENDED in your source 
+before any library #include statements. The wide character curses 
+functions are part of a standard called the XOPEN standard, and
+preprocessing conditionals check this symbol to see whether your 
+program expects to use that standard. This symbol will configure 
+the headers you include to actually have definitions for the 
+documented wide-character functions. It's not just the 'ncursesw' 
+header that depends on it; you will get bugs and linking problems with 
+other libraries if you have this symbol defined for some includes but 
+not others, so it's very important to put it before ALL include 
+statements. 
+
+Unfortunately, it's not mentioned in the man pages of any of the 
+functions that won't link if you don't do it. You have to hunt through
+a bunch of not-very-related man pages before you find the only page that 
+mentions it. 
+
+Seventh, you have to refer to the ncursesw header file relative to some 
+spot on your library path. This can be subtle, because the header files 
+in question have the same names as the standard ncurses header files, 
+so they won't go in the same place. And of course the man pages are 
+helpful enough to tell you that name but not helpful enough to tell you
+*WHICH* file by that name you need to use. My library path is basically 
+/usr/include/ . The headers for wide ncurses all went into a directory 
+in that folder named ncursesw. So instead of saying #include <ncurses.h> 
+as the man pages say, I had to say #include <ncursesw/ncurses.h>. The
+former refers to the "regular" ncurses.h which doesn't have the wide-
+character functions and the latter refers to the wide-character versions. 
+
+Eighth, you have to use the -lncursesw compiler option (as opposed to
+the -lncurses option) when you're linking your executable. 
+
+Ninth and last, I finally succeeded for the first time in getting this 
+all put together and working with a little one-page test program just 
+last night, which happens to have been the dark of the moon. I hope 
+that's not another undocumented requirement, but if it is, then waving a 
+dead chicken over the monitor while compiling should be an acceptable
+substitute. 
+
+Bear

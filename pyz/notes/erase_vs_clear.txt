@@ -1,0 +1,30 @@
+Re: "erase" vs "clear" question
+
+From:   Brian Raiter
+Subject:    Re: "erase" vs "clear" question
+Date:   Thu, 23 Jan 2014 10:36:01 -0800
+> What exactly is the difference between the functions "erase" and
+> "clear"? From what I understand, they both have the same effective
+> expungement result but the latter in addition repaints the window. I
+> don't see the point of having both available---in what situations
+> would it be more apt to use one over the other?
+
+The difference is that clear() also calls clearok(). clearok()
+basically tells ncurses to forget whatever it knows about the current
+terminal contents, so that when refresh() is called, it will actually
+begin by clearing the entire terminal screen before redrawing any of
+it.
+
+erase() on the other hand, just clears the screen (the internal
+object, not the terminal screen). When refresh() is later called,
+ncurses will still compute the minimum number of characters to send to
+update the terminal.
+
+Thus, for example, I typically call erase() at the start of my
+rendering function. I then render the entire screen in its current
+state, and let ncurses optimize the actual output. I typically call
+clear() in response to the user pressing ctrl-R (a popular keystroke
+used to request a redraw of the screen after some other process has
+modified it), or when the program resumes after being suspended by
+ctrl-Z (since the terminal's contents are now completely unknown).
+
