@@ -4,3 +4,6 @@
 [submodule "pyz/sounds"]
 	path = pyz/sounds
 	url = https://github.com/MattCCS/PyZSounds
+[submodule "pyz/layers"]
+	path = pyz/layers
+	url = git@github.com:MattCCS/BlitMaster.git
